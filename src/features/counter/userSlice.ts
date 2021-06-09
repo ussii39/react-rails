@@ -25,8 +25,9 @@ export const incrementAsync = createAsyncThunk(
   "counter/fetchCount",
   async () => {
     const response = await fetchCount();
+    console.log(response.data, "response data");
     // The users we return becomes the `fulfilled` action payload
-    return response.data[1];
+    return response.data[0];
   }
 );
 

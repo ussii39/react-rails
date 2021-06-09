@@ -7,7 +7,7 @@ import {
   incrementByAmount,
   incrementAsync,
   selectCount,
-} from "./counterSlice";
+} from "./userSlice";
 import styles from "./Counter.module.css";
 import { useDispatch } from "react-redux";
 
