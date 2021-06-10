@@ -1,13 +1,7 @@
 import React, { useState, useEffect, Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "./app/hooks";
-import {
-  decrement,
-  increment,
-  incrementByAmount,
-  incrementAsync,
-  selectCount,
-} from "./features/counter/userSlice";
+import { ListUserInfoAsync, selectCount } from "./features/counter/userSlice";
 import "./App.css";
 import Mypage from "./features/counter/Mypage";
 import About from "./features/counter/About";
@@ -26,7 +20,7 @@ function App() {
     //     console.log(data);
     //   });
     const fet = async () => {
-      const a: any = await dispatch(incrementAsync());
+      const a: any = await dispatch(ListUserInfoAsync());
       const id = a.payload.id;
       console.log(id, "id");
       const user = await fetchCount(a.payload.id);

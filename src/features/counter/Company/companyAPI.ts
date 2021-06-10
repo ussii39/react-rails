@@ -1,5 +1,5 @@
 // A mock function to mimic making an async request for data
-export function listUserInfoAsync() {
+export function listCompanyInfoAsync() {
   const result = fetch("http://localhost:3000", {
     method: "GET",
     headers: { "Content-Type": "application/json" },
@@ -14,8 +14,8 @@ export function listUserInfoAsync() {
   return result;
 }
 
-export function userDetailInfoAsync(id) {
-  const result = fetch(`http://localhost:3000/${id}`, {
+export function companyDetailInfoAsync(id) {
+  const result = fetch(`http://localhost:3000/company/${id}`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   })
