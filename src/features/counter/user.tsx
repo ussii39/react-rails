@@ -1,25 +1,16 @@
 import React, { useEffect, useState } from "react";
 
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import {
-  decrement,
-  increment,
-  incrementByAmount,
-  incrementAsync,
-  selectCount,
-} from "./userSlice";
+import { ListUserInfoAsync, selectCount } from "./userSlice";
 import styles from "./Counter.module.css";
 import { useDispatch } from "react-redux";
 
 export function Counter() {
   const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
-  const [incrementAmount, setIncrementAmount] = useState("2");
-
-  const incrementValue = Number(incrementAmount) || 0;
 
   useEffect(() => {
-    let data: any = dispatch(incrementAsync());
+    let data: any = dispatch(ListUserInfoAsync());
     console.log(data.payload);
   }, []);
   return (
