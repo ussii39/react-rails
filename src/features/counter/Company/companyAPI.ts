@@ -1,3 +1,6 @@
+import { ErrorMessage } from "../../../app/consts/error-code";
+import { ErrorCode } from "../../../app/consts/error-message";
+import { ServiceError } from "../../../app/errors/service.error";
 // A mock function to mimic making an async request for data
 export function listCompanyInfoAsync() {
   const result = fetch("http://localhost:3000", {
@@ -15,16 +18,24 @@ export function listCompanyInfoAsync() {
 }
 
 export function companyDetailInfoAsync(id) {
-  const result = fetch(`http://localhost:3000/company/${id}`, {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  })
-    .then((res) => {
-      return res.json();
+  try {
+    const result = fetch(`http://localhost:3000/company/${id}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
     })
-    .then((res) => {
-      console.log(res);
-      return res;
-    });
-  return result;
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        console.log(res);
+        return res;
+      });
+    return result;
+  } catch (e) {
+    throw new ServiceError(
+      ErrorCode.USER_ERR_CODE_001,
+      ErrorMessage.USER_ERR_MESSAGE_001,
+      e
+    );
+  }
 }
